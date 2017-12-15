@@ -26,7 +26,7 @@ def redrawAll():
 if __name__ == '__main__':
     
     data = {}
-    data['board'] = ['d']
+    data['board'] = []
     data['yeet'] = []
     
     buildBoard()
