@@ -4,6 +4,11 @@
 
 from ggame import *
 
+P1COLOR = Color (0x00FF00,1)
+P2COLOR = Color(0xFF00FF,1)
+P1CIRCLE = EllipseAsset(40,40,LineStyle(1,P1COLOR),P1COLOR)
+P2CIRCLE = EllipseAsset(40,40,LineStyle(1,P2COLOR),P2COLOR)
+
 def buildBoard():
     for i in range(0,8):
         data['board'].append(['']*8)
@@ -24,12 +29,9 @@ if __name__ == '__main__':
     data['board'] = ['d']
     data['yeet'] = []
     
-    p1Color = Color(0x00FF00,1)
-    p2Color = Color(0xFF00FF,1)
-    p2Circle = EllipseAsset(40,40,LineStyle(1,p2Color),p2Color)
-    
     buildBoard()
     #redrawAll()
     print(data['board'])
-    Sprite(p2Circle,(50,50))
+    Sprite(P2CIRCLE,(50,50))
+    Sprite(P1CIRCLE,(200,200))
     App().run()
