@@ -4,13 +4,14 @@
 
 from ggame import *
 
-P1COLOR = Color (0x00FF00,1)
+RADIUS = 20
+P1COLOR = Color(0x00FF00,1)
 P2COLOR = Color(0xFF00FF,1)
 WHITE = Color(0xFFFFFF,1)
 BLACK = Color(0x000000,1)
-P1CIRCLE = EllipseAsset(30,30,LineStyle(1,P1COLOR),P1COLOR)
-P2CIRCLE = EllipseAsset(30,30,LineStyle(1,P2COLOR),P2COLOR)
-WHITECIRCLE = EllipseAsset(30,30,LineStyle(2,BLACK),WHITE)
+P1CIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(2,BLACK),P1COLOR)
+P2CIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(2,BLACK),P2COLOR)
+WHITECIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(2,BLACK),WHITE)
 
 def buildBoard():
     for i in range(0,8):
@@ -23,7 +24,7 @@ def redrawAll():
         item.destroy()
     for row in range(0,8):
         for col in range(0,8):
-            Sprite(WHITECIRCLE, (30+(col*60),30+(row*60) ))
+            Sprite(WHITECIRCLE,(RADIUS+(col*(RADIUS*2)),RADIUS+(row*RADIUS*2)))
 if __name__ == '__main__':
     
     data = {}
@@ -34,5 +35,8 @@ if __name__ == '__main__':
     #redrawAll()
     print(data['board'])
     redrawAll()
-   #Sprite(P1CIRCLE(45,45))
+    Sprite(P1CIRCLE,((RADIUS*9),RADIUS*9))
+    Sprite(P2CIRCLE,((RADIUS*9),RADIUS*7))
+    Sprite(P1CIRCLE,((RADIUS*7),RADIUS*7))
+    Sprite(P2CIRCLE,((RADIUS*7),RADIUS*9))
     App().run()
