@@ -4,7 +4,7 @@
 
 from ggame import *
 
-RADIUS = 28
+RADIUS = 20
 LINESIZE = 1.5
 P1COLOR = Color(0x00FF00,1)
 P2COLOR = Color(0xFF00FF,1)
@@ -17,6 +17,7 @@ WHITECIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),WHITE)
 def buildBoard():
     for i in range(0,8):
         data['board'].append(['']*8)
+    data['board'][3][2] = 1
     return data['board']
 
 
@@ -25,19 +26,20 @@ def redrawAll():
         item.destroy()
     for row in range(0,8):
         for col in range(0,8):
-            Sprite(WHITECIRCLE,(RADIUS+(col*(RADIUS*2)),RADIUS+(row*RADIUS*2)))
+            if data['board'][row][col] == '':
+                Sprite(WHITECIRCLE,(RADIUS+(col*(RADIUS*2)),RADIUS+(row*RADIUS*2)))
+            elif data['board'][row][col] == 1:
+                Sprite(P1CIRCLE,([row]*RADIUS,[col]*RADIUS))
+            else:
+                Sprite(P2CIRCLE,((RADIUS*7),RADIUS*9))
+    
+    
 if __name__ == '__main__':
     
     data = {}
     data['board'] = []
     data['yeet'] = []
-    
     buildBoard()
-    #redrawAll()
     print(data['board'])
     redrawAll()
-    Sprite(P1CIRCLE,((RADIUS*9),RADIUS*9))
-    Sprite(P2CIRCLE,((RADIUS*9),RADIUS*7))
-    Sprite(P1CIRCLE,((RADIUS*7),RADIUS*7))
-    Sprite(P2CIRCLE,((RADIUS*7),RADIUS*9))
     App().run()
