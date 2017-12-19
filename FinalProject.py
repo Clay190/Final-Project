@@ -4,8 +4,8 @@
 
 from ggame import *
 
-RADIUS = 30
-LINESIZE = 1.5
+RADIUS = 32
+LINESIZE = 1.4
 P1COLOR = Color(0x00F300,1)
 P2COLOR = Color(0x0080FF,1)
 WHITE = Color(0xFFFFFF,1)
