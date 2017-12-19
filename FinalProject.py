@@ -18,9 +18,9 @@ WHITECIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),WHITE)
 def buildBoard():
     for i in range(0,8):
         data['board'].append(['']*8)
-    data['board'][3][3] = 2
-    data['board'][3][4] = 1
     data['board'][4][3] = 1
+    data['board'][3][4] = 1
+    data['board'][3][3] = 2
     data['board'][4][4] = 2
     return data['board']
 
