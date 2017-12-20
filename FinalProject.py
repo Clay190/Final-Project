@@ -5,7 +5,7 @@
 from ggame import *
 
 RADIUS = 30
-LINESIZE = .14
+LINESIZE = 1.4
 P1COLOR = Color(0x00F300,1)
 P2COLOR = Color(0x0080FF,1)
 WHITE = Color(0xFFFFFF,1)
@@ -17,7 +17,7 @@ WHITECIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),WHITE)
 
 def buildBoard():
     for i in range(0,8):
-        data['board'].append(['']*8)
+        data['board'].append(['0']*8)
     data['board'][4][3] = 1
     data['board'][3][4] = 1
     data['board'][3][3] = 2
@@ -29,10 +29,22 @@ def boardFull():
         print("CLAY")
         return False
     else:
-        print("BOARD FULL DOESNT WR+ORK")
+        print("BOARD FULL DOESNT WORK")
         return True
         
-
+def winner():
+    if '' not in data['board']:
+        p1Points = data['board'].count(1)
+        p2Points = data['board'].count(2)
+        print("Player 1 has", p1Points)
+        print("Player 2 has", p2Points)
+        if p1Points>p2Points:
+            print('Player 1 wins!')
+        if p1Points<p2Points:    
+            print('Player 2 wins!')
+        else:
+            print("This game is a draw!")
+    
 def redrawAll():
     for item in App().spritelist[:]:
         item.destroy()
@@ -55,4 +67,5 @@ if __name__ == '__main__':
     print(data['board'])
     redrawAll()
     boardFull()
+    winner()
     App().run()
