@@ -17,7 +17,7 @@ WHITECIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),WHITE)
 
 def buildBoard():
     for i in range(0,8):
-        data['board'].append(['0']*8)
+        data['board'].append(['']*8)
     data['board'][4][3] = 1
     data['board'][3][4] = 1
     data['board'][3][3] = 2
@@ -25,25 +25,26 @@ def buildBoard():
     return data['board']
 
 def boardFull():
-    if '' in data['board']:
-        print("CLAY")
-        return False
+    for i in range(0,8):
+        if '' in data['board'][i]:
+            print("YEAH")
+            return False
     else:
-        print("BOARD FULL DOESNT WORK")
+        print("Board is full")
         return True
-        
+ 
+#MAKE SURE U DO WHAT U DID WITH THE FOR I IN RANGE() IF '' IN DATA BOARD [I] AND THEN FIND        
 def winner():
-    if '' not in data['board']:
-        p1Points = data['board'].count(1)
-        p2Points = data['board'].count(2)
-        print("Player 1 has", p1Points)
-        print("Player 2 has", p2Points)
-        if p1Points>p2Points:
-            print('Player 1 wins!')
-        if p1Points<p2Points:    
-            print('Player 2 wins!')
-        else:
-            print("This game is a draw!")
+    p1Points = data['board'].count(1)
+    p2Points = data['board'].count(2)
+    print("Player 1 has", p1Points)
+    print("Player 2 has", p2Points)
+    if p1Points>p2Points:
+        print('Player 1 wins!')
+    if p1Points<p2Points:    
+        print('Player 2 wins!')
+    else:
+        print("This game is a draw!")
     
 def redrawAll():
     for item in App().spritelist[:]:
@@ -56,8 +57,7 @@ def redrawAll():
                 Sprite(P1CIRCLE,((row*RADIUS*2)+RADIUS,RADIUS+(col*RADIUS*2)))
             else:
                 Sprite(P2CIRCLE,((row*RADIUS*2)+RADIUS,RADIUS+(col*RADIUS*2)))
-    
-    
+
 if __name__ == '__main__':
     
     data = {}
