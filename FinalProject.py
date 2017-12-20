@@ -4,8 +4,8 @@
 
 from ggame import *
 
-RADIUS = 32
-LINESIZE = 1.4
+RADIUS = 30
+LINESIZE = .14
 P1COLOR = Color(0x00F300,1)
 P2COLOR = Color(0x0080FF,1)
 WHITE = Color(0xFFFFFF,1)
@@ -24,6 +24,14 @@ def buildBoard():
     data['board'][4][4] = 2
     return data['board']
 
+def boardFull():
+    if '' in data['board']:
+        print("CLAY")
+        return False
+    else:
+        print("BOARD FULL DOESNT WR+ORK")
+        return True
+        
 
 def redrawAll():
     for item in App().spritelist[:]:
@@ -46,4 +54,5 @@ if __name__ == '__main__':
     buildBoard()
     print(data['board'])
     redrawAll()
+    boardFull()
     App().run()
