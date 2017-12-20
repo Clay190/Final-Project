@@ -33,7 +33,7 @@ def boardFull():
         print("Board is full")
         return True
  
-#MAKE SURE U DO WHAT U DID WITH THE FOR I IN RANGE() IF '' IN DATA BOARD [I] AND THEN FIND        
+#MAKE SURE U DO WHAT U DID WITH THE FOR I IN RANGE() IF '' IN DATA BOARD [I] SO U SEARCHFOR EACH ROW         
 def winner():
     p1Points = data['board'].count(1)
     p2Points = data['board'].count(2)
