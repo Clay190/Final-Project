@@ -21,7 +21,7 @@ def buildBoard():
     data['board'][4][3] = 1
     data['board'][3][4] = 1
     data['board'][3][3] = 2
-    data['board'][4][4] = 2
+    data['board'][4][4] = 1
     return data['board']
 
 def boardFull():
@@ -33,10 +33,15 @@ def boardFull():
         print("Board is full")
         return True
  
-#MAKE SURE U DO WHAT U DID WITH THE FOR I IN RANGE() IF '' IN DATA BOARD [I] SO U SEARCHFOR EACH ROW         
 def winner():
-    p1Points = data['board'].count(1)
-    p2Points = data['board'].count(2)
+    p1Points = 0
+    p2Points = 0
+    for row in range(0,8):
+        for col in range(0,8):
+            if data['board'][row][col] == 1:
+                p1Points += 1
+            elif data['board'][row][col] == 2:
+                p2Points += 1
     print("Player 1 has", p1Points)
     print("Player 2 has", p2Points)
     if p1Points>p2Points:
