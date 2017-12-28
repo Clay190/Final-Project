@@ -6,14 +6,14 @@ from ggame import *
 
 RADIUS = 30
 LINESIZE = 1.4
-P1COLOR = Color(0x00F300,1)
-P2COLOR = Color(0x0080FF,1)
-WHITE = Color(0xFFFFFF,1)
+P1COLOR = Color(0xFFFFFF,1)
+P2COLOR = Color(0x000000,1)
+BOARDCOLOR = Color(0x888888,0.5)
 BLACK = Color(0x000000,1)
 
 P1CIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),P1COLOR)
 P2CIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),P2COLOR)
-WHITECIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),WHITE)
+BOARDCIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),BOARDCOLOR)
 
 def buildBoard():
     for i in range(0,8):
@@ -21,16 +21,14 @@ def buildBoard():
     data['board'][4][3] = 1
     data['board'][3][4] = 1
     data['board'][3][3] = 2
-    data['board'][4][4] = 1
+    data['board'][4][4] = 2
     return data['board']
 
 def boardFull():
     for i in range(0,8):
         if '' in data['board'][i]:
-            print("YEAH")
             return False
     else:
-        print("Board is full")
         return True
  
 def winner():
@@ -46,7 +44,7 @@ def winner():
     print("Player 2 has", p2Points)
     if p1Points>p2Points:
         print('Player 1 wins!')
-    if p1Points<p2Points:    
+    elif p1Points<p2Points:    
         print('Player 2 wins!')
     else:
         print("This game is a draw!")
@@ -57,20 +55,31 @@ def redrawAll():
     for row in range(0,8):
         for col in range(0,8):
             if data['board'][row][col] == '':
-                Sprite(WHITECIRCLE,(RADIUS+(col*(RADIUS*2)),RADIUS+(row*RADIUS*2)))
+                Sprite(BOARDCIRCLE,(RADIUS+(col*(RADIUS*2)),RADIUS+(row*RADIUS*2)))
             elif data['board'][row][col] == 1:
                 Sprite(P1CIRCLE,((row*RADIUS*2)+RADIUS,RADIUS+(col*RADIUS*2)))
             else:
                 Sprite(P2CIRCLE,((row*RADIUS*2)+RADIUS,RADIUS+(col*RADIUS*2)))
+                
+def flipNorth(x,y):
+    if data['board'][x][y] == 1:
+        Sprite(P1CIRCLE, (x,y))
+    elif data['board'][x][y] == 2:
+        Sprite(P2CIRCLE, (x,y+60))
+    else:
+        print('didn;t detect')
 
 if __name__ == '__main__':
     
     data = {}
     data['board'] = []
+    data['row'] = 3
+    data['col'] = 3
     
     buildBoard()
     print(data['board'])
     redrawAll()
     boardFull()
     winner()
+    flipNorth(data['col'],data['row'])
     App().run()
