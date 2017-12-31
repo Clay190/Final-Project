@@ -63,9 +63,9 @@ def redrawAll():
                 
 def flipNorth(x,y):
     if data['board'][x][y] == 1:
-        data['board'][x][y] = 2
+        data['board'][x][y-1] = 2
     elif data['board'][x][y] == 2:
-        data['board'][x][y] = 1
+        data['board'][x][y-1] = 1
     else:
         print('didnt work')
     redrawAll()
@@ -74,13 +74,13 @@ if __name__ == '__main__':
     
     data = {}
     data['board'] = []
-    data['row'] = 4
-    data['col'] = 4
+    data['row'] = 3
+    data['col'] = 3
     
     buildBoard()
+    flipNorth(data['col'],data['row'])
     print(data['board'])
     redrawAll()
     boardFull()
     winner()
-    flipNorth(data['col'],data['row'])
     App().run()
