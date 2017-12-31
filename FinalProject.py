@@ -63,18 +63,19 @@ def redrawAll():
                 
 def flipNorth(x,y):
     if data['board'][x][y] == 1:
-        Sprite(P1CIRCLE, (x*RADIUS*2,(y*RADIUS*2)+RADIUS))
+        data['board'][x][y] = 2
     elif data['board'][x][y] == 2:
-        Sprite(P2CIRCLE, (x*RADIUS*2,(y*RADIUS*2)+RADIUS))
+        data['board'][x][y] = 1
     else:
-        print('0didnt detect')
-
+        print('didnt work')
+    redrawAll()
+    
 if __name__ == '__main__':
     
     data = {}
     data['board'] = []
-    data['row'] = 3
-    data['col'] = 3
+    data['row'] = 4
+    data['col'] = 4
     
     buildBoard()
     print(data['board'])
