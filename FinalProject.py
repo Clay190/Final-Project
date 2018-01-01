@@ -55,7 +55,7 @@ def redrawAll():
     for row in range(0,8):
         for col in range(0,8):
             if data['board'][row][col] == '':
-                Sprite(BOARDCIRCLE,(RADIUS+(col*(RADIUS*2)),RADIUS+(row*RADIUS*2)))
+                Sprite(BOARDCIRCLE,(RADIUS+(row*(RADIUS*2)),RADIUS+(col*RADIUS*2)))
             elif data['board'][row][col] == 1:
                 Sprite(P1CIRCLE,((row*RADIUS*2)+RADIUS,RADIUS+(col*RADIUS*2)))
             else:
