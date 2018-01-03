@@ -102,43 +102,43 @@ def flipWest(x,y):
     if data['board'][x-i][y] != '':
         data['board'][x-i][y] = 1
         redrawAll()
-'''
+
 def flipNorthEast(x,y):
-    if data['board'][x][y] == 1:
-        data['board'][x+1][y-1] = 2
-    elif data['board'][x][y] == 2:
-        data['board'][x+1][y-1] = 1
-    else:
-        print('flipNorthEast didnt work')
-    redrawAll()
+    i=1
+    while data['board'][x+i][y-i] == 2:
+        print(i)
+        i+=1
+    if data['board'][x+i][y-i] != '':
+        data['board'][x+i][y-i] = 1
+        redrawAll()
 
 def flipNorthWest(x,y):
-    if data['board'][x][y] == 1:
-        data['board'][x-1][y-1] = 2
-    elif data['board'][x][y] == 2:
-        data['board'][x-1][y-1] = 1
-    else:
-        print('flipNorthWest didnt work')
-    redrawAll()
+    i=1
+    while data['board'][x-i][y-i] == 2:
+        print(i)
+        i+=1
+    if data['board'][x-i][y-i] != '':
+        data['board'][x-i][y-i] = 1
+        redrawAll()
     
 def flipSouthEast(x,y):
-    if data['board'][x][y] == 1:
-        data['board'][x+1][y+1] = 2
-    elif data['board'][x][y] == 2:
-        data['board'][x+1][y+1] = 1
-    else:
-        print('flipSouthEast didnt work')
-    redrawAll()
+    i=1
+    while data['board'][x+i][y+i] == 2:
+        print(i)
+        i+=1
+    if data['board'][x+i][y+i] != '':
+        data['board'][x+i][y+i] = 1
+        redrawAll()
 
 def flipSouthWest(x,y):
-    if data['board'][x][y] == 1:
-        data['board'][x-1][y+1] = 2
-    elif data['board'][x][y] == 2:
-        data['board'][x-1][y+1] = 1
-    else:
-        print('flipSouthWest didnt work')
-    redrawAll()
-    '''
+    i=1
+    while data['board'][x-i][y+i] == 2:
+        print(i)
+        i+=1
+    if data['board'][x-i][y+i] != '':
+        data['board'][x-i][y+i] = 1
+        redrawAll()
+
 def flipPieces(x,y):
     print('Do flipPieces function')
     
