@@ -18,18 +18,23 @@ BOARDCIRCLE = EllipseAsset(RADIUS,RADIUS,LineStyle(LINESIZE,BLACK),BOARDCOLOR)
 def buildBoard():
     for i in range(0,8):
         data['board'].append(['']*8)
-    data['board'][4][3] = 1
     data['board'][3][4] = 1
-    data['board'][3][3] = 2
-    data['board'][4][4] = 2
+    data['board'][3][3] = 1
+    data['board'][4][3] = 2
+    data['board'][5][3] = 2
+    data['board'][6][3] = 2
+    data['board'][2][3] = 2
+    data['board'][1][3] = 1
+    data['board'][7][3] = 1
     return data['board']
 
 def boardFull():
     for i in range(0,8):
         if '' in data['board'][i]:
-            print('yea')
+            print('board is not full')
             return False
     else:
+        print('board is full')
         return True
  
 def winner():
@@ -61,43 +66,43 @@ def redrawAll():
                 Sprite(P1CIRCLE,((row*RADIUS*2)+RADIUS,RADIUS+(col*RADIUS*2)))
             else:
                 Sprite(P2CIRCLE,((row*RADIUS*2)+RADIUS,RADIUS+(col*RADIUS*2)))
-'''
+                
 def flipNorth(x,y):
-    if data['board'][x][y] == 1:
-        data['board'][x][y-1] = 2
-    elif data['board'][x][y] == 2:
-        data['board'][x][y-1] = 1
-    else:
-        print('flipNorth didnt work')
-    redrawAll()
+    i=1
+    while data['board'][x][y-i] == 2:
+        print(i)
+        i+=1
+    if data['board'][x][y-i] != '':
+        data['board'][x][y-i] = 1
+        redrawAll()
 
 def flipSouth(x,y):
-    if data['board'][x][y] == 1:
-        data['board'][x][y+1] = 2
-    elif data['board'][x][y] == 2:
-        data['board'][x][y+1] = 1
-    else:
-        print('flipSouth didnt work')
-    redrawAll()
-'''
+    i=1
+    while data['board'][x+i][y+i] == 2:
+        print(i)
+        i+=1
+    if data['board'][x+i][y+i] != '':
+        data['board'][x+i][y+i] = 1
+        redrawAll()
+
 def flipEast(x,y):
     i=1
-    while data['board'][x][y+i] == 1:
+    while data['board'][x+i][y] == 2:
+        print(i)
         i+=1
-    if data['board'][x][y+i] != '':
-        data['board'][x][y+i] = 2
+    if data['board'][x+i][y] != '':
+        data['board'][x+i][y] = 1
         redrawAll()
-    
-'''    
-def flipWest(x,y):
-    if data['board'][x][y] == 1:
-        data['board'][x-1][y] = 2
-    elif data['board'][x][y] == 2:
-        data['board'][x-1][y] = 1
-    else:
-        print('flipWest didnt work')
-    redrawAll()
 
+def flipWest(x,y):
+    i=1
+    while data['board'][x-i][y] == 2:
+        print(i)
+        i+=1
+    if data['board'][x-i][y] != '':
+        data['board'][x-i][y] = 1
+        redrawAll()
+'''
 def flipNorthEast(x,y):
     if data['board'][x][y] == 1:
         data['board'][x+1][y-1] = 2
@@ -141,12 +146,13 @@ if __name__ == '__main__':
     
     data = {}
     data['board'] = []
-    data['row'] = 4
-    data['col'] = 4
+    data['row'] = 3
+    data['col'] = 3
     
     buildBoard()
-    flipPieces(data['col'],data['row'])
-    flipEast(data['col'],data['row'])
+    print(data['board'])
+    flipPieces(data['row'],data['col'])
+    flipEast(data['row'],data['col'])
     print(data['board'])
     redrawAll()
     boardFull()
