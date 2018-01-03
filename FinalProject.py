@@ -87,12 +87,16 @@ def flipSouth(x,y):
 
 def flipEast(x,y):
     i=1
+    m=0
     while data['board'][x+i][y] == 2:
         print(i)
         i+=1
+        m+=1
     if data['board'][x+i][y] != '':
         data['board'][x+i][y] = 1
-        redrawAll()
+        for t in range(m+1):
+            data['board'][x+t][y] = 1
+    redrawAll()
 
 def flipWest(x,y):
     i=1
@@ -137,7 +141,7 @@ def flipSouthWest(x,y):
         i+=1
     if data['board'][x-i][y+i] != '':
         data['board'][x-i][y+i] = 1
-        redrawAll()
+    redrawAll()
 
 def flipPieces(x,y):
     print('Do flipPieces function')
