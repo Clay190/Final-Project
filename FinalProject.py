@@ -74,7 +74,7 @@ def flipNorth(x,y):
     i=1
     m=0
     if data['turn']%2 == 0:
-        if 8>x>-1 and 8>y>-1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x][y-i]:
             while data['board'][x][y-i] == 2:
                 i+=1
                 m+=1
@@ -83,8 +83,7 @@ def flipNorth(x,y):
                 for t in range(m+1):
                     data['board'][x][y-t] = 1
     else:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x][y-i] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x][y-i]:
                 i+=1
                 m+=1
             if data['board'][x][y-i] != '':
@@ -98,8 +97,7 @@ def flipSouth(x,y):
     i=1
     m=0
     if data['turn']%2 == 0:
-        if 8>x>-1 and 8>y>-1:    
-            while data['board'][x][y+i] == 2:
+        while 8>x>-1 and 8>y>-1 and data['board'][x][y+i]:
                 i+=1
                 m+=1
             if data['board'][x][y+i] != '':
@@ -107,8 +105,7 @@ def flipSouth(x,y):
                 for t in range(m+1):
                     data['board'][x][y+t] = 1
     else:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x][y+i] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x][y+i]:
                 i+=1
                 m+=1
             if data['board'][x][y+i] != '':
@@ -121,8 +118,7 @@ def flipEast(x,y):
     i=1
     m=0
     if data['turn']%2 == 0:    
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x+i][y] == 2:
+        while 8>x>-1 and 8>y>-1 and data['board'][x+i][y-i]:
                 i+=1
                 m+=1
             if data['board'][x+i][y] != '':
@@ -130,8 +126,7 @@ def flipEast(x,y):
                 for t in range(m+1):
                     data['board'][x+t][y] = 1
     else:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x+i][y] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x+i][y-i]:
                 i+=1
                 m+=1
             if data['board'][x+i][y] != '':
@@ -144,8 +139,7 @@ def flipWest(x,y):
     i=1
     m=0
     if data['turn']%2 == 0:    
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x-i][y] == 2:
+        while 8>x>-1 and 8>y>-1 and data['board'][x-i][y]:
                 i+=1
                 m+=1
             if data['board'][x-i][y] != '':
@@ -153,8 +147,7 @@ def flipWest(x,y):
                 for t in range(m+1):
                     data['board'][x-t][y] = 1
     else:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x-i][y] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x-i][y]:
                 i+=1
                 m+=1
             if data['board'][x-i][y] != '':
@@ -167,8 +160,7 @@ def flipNorthEast(x,y):
     i=1
     m=0
     if data['turn']%2 == 0:    
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x+i][y-i] == 2:
+        while 8>x>-1 and 8>y>-1 and data['board'][x+i][y-i]:
                 i+=1
                 m+=1
             if data['board'][x+i][y-i] != '':
@@ -176,8 +168,7 @@ def flipNorthEast(x,y):
                 for t in range(m+1):
                     data['board'][x+t][y-t] = 1
     else:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x+i][y-i] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x+i][y-i]:
                 i+=1
                 m+=1
             if data['board'][x+i][y-i] != '':
@@ -190,8 +181,7 @@ def flipNorthWest(x,y):
     i=1
     m=0
     if data['turn']%2 == 0:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x-i][y-i] == 2:
+        while 8>x>-1 and 8>y>-1 and data['board'][x-i][y-i]:
                 i+=1
                 m+=1
             if data['board'][x-i][y-i] != '':
@@ -199,8 +189,7 @@ def flipNorthWest(x,y):
                 for t in range(m+1):
                     data['board'][x-t][y-t] = 1
     else:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x-i][y-i] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x-i][y-i]:
                 i+=1
                 m+=1
             if data['board'][x-i][y-i] != '':
@@ -213,8 +202,7 @@ def flipSouthEast(x,y):
     i=1
     m=0
     if data['turn']%2==0:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x+i][y+i] == 2:
+        while 8>x>-1 and 8>y>-1 and data['board'][x+i][yii]:
                 i+=1
                 m+=1
             if data['board'][x+i][y+i] != '':
@@ -222,8 +210,7 @@ def flipSouthEast(x,y):
                 for t in range(m+1):
                     data['board'][x+t][y+t] = 1
     else:
-        if 8>x>-1 and 8>y>-1:
-            while data['board'][x+i][y+i] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x+i][y+i]:
                 i+=1
                 m+=1
             if data['board'][x+i][y+i] != '':
@@ -236,8 +223,7 @@ def flipSouthWest(x,y):
     i=1
     m=0
     if data['turn']%2 == 0:
-            if 8>x>-1 and 8>y>-1:
-                while data['board'][x+i][y-i] == 2:
+           while 8>x>-1 and 8>y>-1 and data['board'][x-i][y+i]:
                     i+=1
                     m+=1
                 if data['board'][x-i][y+i] != '':
@@ -245,8 +231,7 @@ def flipSouthWest(x,y):
                     for t in range(m+1):
                         data['board'][x-t][y+t] = 1
     else:
-        if 8>x>-1 and 8>y>-1:    
-            while data['board'][x-i][y+i] == 1:
+        while 8>x>-1 and 8>y>-1 and data['board'][x-i][y+i]:
                 i+=1
                 m+=1
             if data['board'][x-i][y+i] != '':
@@ -254,16 +239,18 @@ def flipSouthWest(x,y):
                 for t in range(m+1):
                     data['board'][x-t][y+t] = 2
                     
-#When the mouse is clicked, this function checks the x coordinate and y coordinate of where the mouse was clicked and then places a peice in that square. It checks what turn it is by seeing if the data['turn'] is even or odd. Then it updates the data['turn'] variable and it runs the flipPeices function using the x and y coordinates of the mouse click.
+#When the mouse is clicked, this function checks whether it is in the board and it checks the x coordinate and y coordinate of where the mouse was clicked and then places a peice in that square. It checks what turn it is by seeing if the data['turn'] is even or odd. Then it updates the data['turn'] variable and it runs the flipPeices function using the x and y coordinates of the mouse click.
 def mouseClick(event):
-    row = int(event.y/(2*RADIUS))
-    col = int(event.x/(2*RADIUS))
-    if data['turn']%2 == 0:
-        data['board'][row][col] = 2
-    else:
-        data['board'][row][col] = 1
-    data['turn']+=1
-    flipPieces(row,col)
+    if 0<event.x<RADIUS*16 and 0<event.y<RADIUS*16:
+        row = int(event.y/(2*RADIUS))
+        col = int(event.x/(2*RADIUS))
+        if data['turn']%2 == 0:
+            data['board'][row][col] = 2
+            data['turn']+=1
+        else:
+            data['board'][row][col] = 1
+            data['turn']+=1
+        flipPieces(row,col)
     
 #Runs all the individual flip functions and then redraws the whole board and checks to see whether or not the board is full by using the redrawAll and boardFull functions.
 def flipPieces(x,y):
